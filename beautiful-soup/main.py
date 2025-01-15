@@ -1,10 +1,15 @@
 from bs4 import BeautifulSoup
+import requests
 
-with open("website.html") as data_file:
-    content = data_file.read()
-    # print(content)
+response = requests.get("https://web.archive.org/web/20200518073855/https://www.empireonline.com/movies/features/best-movies-2/")
 
-soup = BeautifulSoup(content, "html.parser")
+soup = BeautifulSoup(response.text, "html.parser")
+movies = soup.find_all("h3", class_="title")
+title_texts = [title.get_text(strip=True) for title in movies]
+title_texts.reverse()
 
-for tag in soup.find_all(name="a"):
-    print(tag.fi)
+with open("movies_list.txt", "w") as doc:
+    doc.write("\n".join(title_texts) + "\n")
+
+
+
