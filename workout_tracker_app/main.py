@@ -1,7 +1,7 @@
 import requests
 
-APP_ID = "df81dbf4"
-API_KEY = "526b4ef54f3c2195fd124d5e2a511f81"
+APP_ID = ""
+API_KEY = ""
 
 BASE_URL = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
